@@ -1,5 +1,5 @@
 ;;
-; defunkt's lisp playground
+; angrytuna's lisp playground
 ;
 
 (defun empty? (target)

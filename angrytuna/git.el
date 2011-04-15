@@ -4,21 +4,21 @@
 ;; share's textmate.el's concept of
 ;; a project root
 
-(defun defunkt-git-modeline ()
+(defun angrytuna-git-modeline ()
   (interactive)
   (let ((root (textmate-project-root)))
     (when (file-directory-p (concat root ".git"))
-      (defunkt-set-mode-line (concat "Git: " (defunkt-git-current-branch root)))
+      (angrytuna-set-mode-line (concat "Git: " (angrytuna-git-current-branch root)))
       (force-mode-line-update t))))
 
-(defun defunkt-set-mode-line (mode-line)
+(defun angrytuna-set-mode-line (mode-line)
   ;; this has to be built in...
   (setq mode-line-format
         (append
          (butlast mode-line-format (- (length mode-line-format) 8))
          (cons mode-line (nthcdr 8 mode-line-format)))))
 
-(defun defunkt-git-current-branch (root)
+(defun angrytuna-git-current-branch (root)
   (let ((result) (branches
          (split-string
           (shell-command-to-string
@@ -33,5 +33,5 @@
         (setq branches (cdr branches))))
     result))
 
-;; (add-hook 'find-file-hook 'defunkt-git-modeline)
-;; (add-hook 'dired-after-readin-hook 'defunkt-git-modeline)
+;; (add-hook 'find-file-hook 'angrytuna-git-modeline)
+;; (add-hook 'dired-after-readin-hook 'angrytuna-git-modeline)

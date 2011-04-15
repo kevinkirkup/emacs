@@ -1,16 +1,15 @@
 ;; others
-(load "defunkt/dired")
-(load "defunkt/ruby")
-(load "defunkt/shell")
-(load "defunkt/javascript")
-(load "defunkt/erlang")
-(load "defunkt/python")
-(load "defunkt/sgml")
-(load "defunkt/erc")
-(load "defunkt/artist")
-(load "defunkt/coffee")
-(load "defunkt/markdown")
-(load "defunkt/css")
+(load "angrytuna/dired")
+(load "angrytuna/ruby")
+(load "angrytuna/shell")
+(load "angrytuna/javascript")
+(load "angrytuna/erlang")
+(load "angrytuna/python")
+(load "angrytuna/sgml")
+(load "angrytuna/erc")
+(load "angrytuna/artist")
+(load "angrytuna/markdown")
+(load "angrytuna/css")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -61,10 +60,7 @@
 (add-hook 'c-mode-hook
           '(lambda ()
              (setq c-auto-newline t)
-             (define-key c-mode-map "{" 'defunkt/c-electric-brace)))
-
-;; mustache
-(add-to-list 'auto-mode-alist '("\\.mustache$" . tpl-mode))
+             (define-key c-mode-map "{" 'angrytuna/c-electric-brace)))
 
 ;; textmate.el
 (vendor 'textmate)

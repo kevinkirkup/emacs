@@ -12,7 +12,7 @@
   (interactive)
   (insert "  "))
 
-(defun defunkt-indent ()
+(defun angrytuna-indent ()
   (interactive)
   (insert "  "))
 
@@ -26,7 +26,7 @@
   (markdown-mode)
   (turn-on-word-wrap))
 
-(defun defunkt-zap-to-char (arg char)
+(defun angrytuna-zap-to-char (arg char)
   "Kill up to but excluding ARG'th occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.
 Goes backward if ARG is negative; error if CHAR not found.
@@ -45,16 +45,16 @@ This emulates Vim's `dt` behavior, which rocks."
   (interactive)
   (shell-command-on-region (point-min) (point-max) "wc -w"))
 
-(defun defunkt-ido-find-config ()
+(defun angrytuna-ido-find-config ()
   (interactive)
   (find-file
-   (concat "~/.emacs.d/defunkt/"
+   (concat "~/.emacs.d/angrytuna/"
            (ido-completing-read "Config file: "
-                                (directory-files "~/.emacs.d/defunkt/"
+                                (directory-files "~/.emacs.d/angrytuna/"
                                                  nil
                                                  "^[^.]")))))
 
-(defun defunkt-delete-till-end-of-buffer ()
+(defun angrytuna-delete-till-end-of-buffer ()
   "Deletes all text from mark until `end-of-buffer'."
   (interactive)
   (save-excursion
@@ -62,18 +62,18 @@ This emulates Vim's `dt` behavior, which rocks."
       (end-of-buffer)
       (delete-region beg (point)))))
 
-(defun defunkt-ido-find-project ()
+(defun angrytuna-ido-find-project ()
   (interactive)
   (find-file
    (concat "~/Code/" (ido-completing-read "Project: "
                            (directory-files "~/Code/" nil "^[^.]")))))
 
-(defun defunkt-goto-config ()
+(defun angrytuna-goto-config ()
   (interactive)
-  (find-file "~/.emacs.d/defunkt.el"))
+  (find-file "~/.emacs.d/angrytuna.el"))
 
 ;; fix kill-word
-(defun defunkt-kill-word (arg)
+(defun angrytuna-kill-word (arg)
   "Special version of kill-word which swallows spaces separate from words"
   (interactive "p")
 
@@ -81,10 +81,10 @@ This emulates Vim's `dt` behavior, which rocks."
     (kill-region (point)
                  (cond
                   ((looking-at whitespace-regexp) (re-search-forward whitespace-regexp) (point))
-                  ((looking-at "\n") (kill-line) (defunkt-kill-word arg))
+                  ((looking-at "\n") (kill-line) (angrytuna-kill-word arg))
                   (t (forward-word arg) (point))))))
 
-(defun defunkt-backward-kill-word (arg)
+(defun angrytuna-backward-kill-word (arg)
   "Special version of backward-kill-word which swallows spaces separate from words"
   (interactive "p")
   (if (looking-back "\\s-+")
@@ -93,7 +93,7 @@ This emulates Vim's `dt` behavior, which rocks."
 
 ; set the mode based on the shebang;
 ; TODO: this sometimes breaks
-(defun defunkt-shebang-to-mode ()
+(defun angrytuna-shebang-to-mode ()
   (interactive)
   (let*
       ((bang (buffer-substring (point-min) (prog2 (end-of-line) (point) (move-beginning-of-line 1))))
@@ -103,10 +103,10 @@ This emulates Vim's `dt` behavior, which rocks."
        (mode-fn (intern (concat mode "-mode"))))
     (when (functionp mode-fn)
       (funcall mode-fn))))
-;(add-hook 'find-file-hook 'defunkt-shebang-to-mode)
+;(add-hook 'find-file-hook 'angrytuna-shebang-to-mode)
 
 ; duplicate the current line
-(defun defunkt-duplicate-line ()
+(defun angrytuna-duplicate-line ()
   (interactive)
     (beginning-of-line)
     (copy-region-as-kill (point) (progn (end-of-line) (point)))
@@ -120,34 +120,34 @@ This emulates Vim's `dt` behavior, which rocks."
   (let* ((file (symbol-name library))
          (normal (concat "~/.emacs.d/vendor/" file))
          (suffix (concat normal ".el"))
-         (defunkt (concat "~/.emacs.d/defunkt/" file)))
+         (angrytuna (concat "~/.emacs.d/angrytuna/" file)))
     (cond
      ((file-directory-p normal) (add-to-list 'load-path normal) (require library))
      ((file-directory-p suffix) (add-to-list 'load-path suffix) (require library))
      ((file-exists-p suffix) (require library)))
-    (when (file-exists-p (concat defunkt ".el"))
-      (load defunkt))))
+    (when (file-exists-p (concat angrytuna ".el"))
+      (load angrytuna))))
 
-(defun defunkt-backward-kill-line ()
+(defun angrytuna-backward-kill-line ()
   (interactive)
   (kill-line 0))
 
 (require 'thingatpt)
-(defun defunkt-change-num-at-point (fn)
+(defun angrytuna-change-num-at-point (fn)
   (let* ((num (string-to-number (thing-at-point 'word)))
          (bounds (bounds-of-thing-at-point 'word)))
     (save-excursion
       (goto-char (car bounds))
-      (defunkt-kill-word 1)
+      (angrytuna-kill-word 1)
       (insert (number-to-string (funcall fn num 1))))))
 
-(defun defunkt-inc-num-at-point ()
+(defun angrytuna-inc-num-at-point ()
   (interactive)
-  (defunkt-change-num-at-point '+))
+  (angrytuna-change-num-at-point '+))
 
-(defun defunkt-dec-num-at-point ()
+(defun angrytuna-dec-num-at-point ()
   (interactive)
-  (defunkt-change-num-at-point '-))
+  (angrytuna-change-num-at-point '-))
 
 (defun url-fetch-into-buffer (url)
   (interactive "sURL:")
@@ -166,7 +166,7 @@ This emulates Vim's `dt` behavior, which rocks."
   (when (yes-or-no-p "Are you sure you want to Gist this buffer? ")
     (gist-region-or-buffer private)))
 
-  (defun defunkt-clean-slate ()
+  (defun angrytuna-clean-slate ()
     "Kills all buffers except *scratch*"
     (interactive)
     (let ((buffers (buffer-list)) (safe '("*scratch*")))
@@ -175,7 +175,7 @@ This emulates Vim's `dt` behavior, which rocks."
           (kill-buffer (car buffers))
           (setq buffers (cdr buffers))))))
 
-  (defun defunkt/c-electric-brace (arg)
+  (defun angrytuna/c-electric-brace (arg)
     "Inserts a closing curly, too."
     (interactive "*P")
     (c-electric-brace arg)

@@ -6,7 +6,7 @@
             (make-local-variable 'indent-line-function)
             (setq indent-line-function 'css-indent)
             (define-key css-mode-map "\C-ct" 'css-insert-section)
-            (define-key css-mode-map [tab] 'defunkt-indent)))
+            (define-key css-mode-map [tab] 'angrytuna-indent)))
 
 (defun css-indent ()
   (interactive)

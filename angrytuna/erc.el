@@ -10,7 +10,7 @@
 
 (setq erc-mode-line-format "%t (%n)")
 
-(defun defunkt-erc-update-topic (parsed)
+(defun angrytuna-erc-update-topic (parsed)
   (interactive)
 
   (if (get-buffer (erc-response.contents parsed))
@@ -22,10 +22,10 @@
 
 ;; (add-hook 'erc-server-JOIN-functions
 ;;           (lambda (PROC parsed)
-;;             (defunkt-erc-update-topic parsed)))
+;;             (angrytuna-erc-update-topic parsed)))
 ;; (add-hook 'erc-server-PART-functions
 ;;           (lambda (PROC parsed)
-;;             (defunkt-erc-update-topic parsed)))
+;;             (angrytuna-erc-update-topic parsed)))
 
 (setq erc-autojoin-channels-alist
       '(("freenode.net" "#github" "#logicalawesome" "#rip"

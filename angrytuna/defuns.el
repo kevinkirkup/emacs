@@ -16,11 +16,6 @@
   (interactive)
   (insert "  "))
 
-(defun mustache ()
-  (interactive)
-  (tpl-mode)
-  (setq truncate-lines t))
-
 (defun email ()
   (interactive)
   (markdown-mode)

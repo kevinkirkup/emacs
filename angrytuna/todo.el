@@ -1,4 +1,4 @@
-(defvar angrytuna-todo-global-file "~/.todo"
+[ ] (defvar angrytuna-todo-global-file "~/.todo"
   "Path to the todo file used by `angrytuna-todo-quick-jump' and friends.")
 
 (defun angrytuna-todo-quick-enter ()
@@ -66,7 +66,7 @@
     (insert status)))
 
 (defun angrytuna-todo-move-item-up ()
-  "Moves the focused todo item down a line."  
+  "Moves the focused todo item down a line."
   (interactive)
   (save-excursion
     (beginning-of-line 1)
@@ -80,7 +80,7 @@
     (forward-line -2)))
 
 (defun angrytuna-todo-move-item-down ()
-  "Moves the focused todo item up a line."    
+  "Moves the focused todo item up a line."
   (interactive)
   (let (eof chars)
     (setq chars (- (point) (point-at-bol)))
@@ -95,5 +95,5 @@
         (save-buffer)))
     (when (not eof)
       (forward-line 1)
-      
+
 )))

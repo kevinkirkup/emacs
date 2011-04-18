@@ -1,4 +1,4 @@
-    ;;; integrate ido with artist-mode
+   ;;; integrate ido with artist-mode
    (defun artist-ido-select-operation (type)
      "Use ido to select a drawing operation in artist-mode"
      (interactive (list (ido-completing-read "Drawing operation: "
@@ -17,14 +17,14 @@
      (if (equal type "Spray-size")
        (artist-select-operation "spray set size")
        (call-interactively (artist-fc-get-fn-from-symbol
-			    (cdr (assoc type '(("Set Fill" . set-fill)
-					       ("Set Line" . set-line)
-					       ("Set Erase" . set-erase)
-					       ("Rubber-banding" . rubber-band)
-					       ("Trimming" . trimming)
-					       ("Borders" . borders)
-					       ("Spray-chars" . spray-chars))))))))
+          (cdr (assoc type '(("Set Fill" . set-fill)
+                 ("Set Line" . set-line)
+                 ("Set Erase" . set-erase)
+                 ("Rubber-banding" . rubber-band)
+                 ("Trimming" . trimming)
+                 ("Borders" . borders)
+                 ("Spray-chars" . spray-chars))))))))
    (add-hook 'artist-mode-init-hook
-	     (lambda ()
-	       (define-key artist-mode-map (kbd "C-c C-a C-o") 'artist-ido-select-operation)
-	       (define-key artist-mode-map (kbd "C-c C-a C-c") 'artist-ido-select-settings)))
+       (lambda ()
+         (define-key artist-mode-map (kbd "C-c C-a C-o") 'artist-ido-select-operation)
+         (define-key artist-mode-map (kbd "C-c C-a C-c") 'artist-ido-select-settings)))

@@ -1,7 +1,20 @@
 ; general
 (global-set-key "\C-x\C-b" 'buffer-menu)
+
+;; Tips taken from http://sites.google.com/site/steveyegge2/effective-emacs
+;; Don't use the meta key for executing commands
+;; since this is off the home row.
+;; Use C-x C-m instead, add C-c C-m incase you are sloppy
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
+
+;; Use backword kill instead of backspace
+;; Add C-c C-k incase you are sloppy
+(global-set-key "\C-w" 'backword-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
+;; Gist bindings from Defunkt
 (global-set-key "\C-c\C-g" 'gist-buffer-confirm)
 (global-set-key "\C-xg" 'magit-status)
 (global-set-key "\M-i" 'insert-soft-tab)
@@ -9,7 +22,7 @@
 (global-set-key "\C-xp" 'angrytuna-ido-find-project)
 (global-set-key "\C-cp" 'angrytuna-ido-find-config)
 (global-set-key "\C-cP" 'angrytuna-goto-config)
-(global-set-key [C-return] 'angrytuna-duplicate-line)
+;; (global-set-key [C-return] 'angrytuna-duplicate-line)
 (global-set-key "\C-x\C-g" 'github-ido-find-file)
 (global-set-key "\C-R" 'replace-string)
 (global-set-key (kbd "C-S-N") 'word-count)
@@ -17,17 +30,17 @@
 
 ; todo
 (global-set-key [M-return] 'angrytuna-todo-toggle)
-(global-set-key "\C-xt" 'angrytuna-todo-quick-enter)
+;; (global-set-key "\C-xt" 'angrytuna-todo-quick-enter)
 (global-set-key [M-down] 'angrytuna-todo-move-item-down)
 (global-set-key [M-up] 'angrytuna-todo-move-item-up)
 
 ; vim emulation
-(global-set-key [C-tab] 'other-window)
+;; (global-set-key [C-tab] 'other-window)
 ;; (global-set-key [M-up] 'angrytuna-inc-num-at-point)
 ;; (global-set-key [M-down] 'angrytuna-dec-num-at-point)
-(global-set-key (kbd "C-*") 'isearch-forward-at-point)
+;; (global-set-key (kbd "C-*") 'isearch-forward-at-point)
 (global-set-key [remap kill-word] 'angrytuna-kill-word)
-(global-set-key (kbd "C-S-k") 'angrytuna-backward-kill-line)
+;; (global-set-key (kbd "C-S-k") 'angrytuna-backward-kill-line)
 (global-set-key [remap backward-kill-word] 'angrytuna-backward-kill-word)
 (global-set-key [remap aquamacs-backward-kill-word] 'angrytuna-backward-kill-word)
 

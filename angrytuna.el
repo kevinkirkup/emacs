@@ -26,7 +26,7 @@
 (vendor 'cheat)
 (vendor 'magit)
 (vendor 'gist)
-(vendor 'growl)
+;; (vendor 'growl)
 (vendor 'textile-mode)
 (vendor 'yaml-mode)
 (vendor 'tpl-mode)
@@ -34,5 +34,8 @@
 (vendor 'ooc-mode)
 (vendor 'coffee-mode)
 (vendor 'auto-complete)
+(vendor 'anything)
+(vendor 'anything-config)
+(vendor 'anything-match-plugin)
 
 (load "angrytuna/auto-complete")

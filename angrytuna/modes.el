@@ -10,6 +10,7 @@
 (load "angrytuna/artist")
 (load "angrytuna/markdown")
 (load "angrytuna/css")
+(load "angrytuna/scheme")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

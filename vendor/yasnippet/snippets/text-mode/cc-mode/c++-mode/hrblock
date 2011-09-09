@@ -1,0 +1,11 @@
+#name : hresult block { … }
+# --
+if (SUCCEEDED(hr)) {
+  ${1:// Some operation}
+
+  if (FAILED(hr)) {
+    ${2:// Failure Handling}
+  }
+}
+
+$0

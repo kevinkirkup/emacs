@@ -61,4 +61,9 @@
   (one-buffer-one-frame-mode 0))
 
 ;; Add remember mode to Org-Mode
+(require 'remember)
+(require 'org-remember)
 (org-remember-insinuate)
+
+;; Cluck for Chicken Scheme
+(require 'cluck)

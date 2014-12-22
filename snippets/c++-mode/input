@@ -1,0 +1,10 @@
+#name : check input block {…}
+# --
+
+HRESULT hr = S_OK;
+
+// Check the input parameters
+if (${1:condition})
+  hr = E_FAIL;
+
+$0
